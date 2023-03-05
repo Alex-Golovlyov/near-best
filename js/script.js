@@ -88,7 +88,6 @@ $(document).ready(function () {
     //sliders
     $('#source-elements').slick({
       dots: true,
-      arrows: false,
       arrows: true,
       speed: 100,
       cssEase: 'linear'
