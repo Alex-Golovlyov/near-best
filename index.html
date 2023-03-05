@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Лучшее рядом Apart Sharing</title>
+    <link rel="stylesheet" href="font/font.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css"/>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+</head>
+<body>
+
+    <div id="subsribe" class="lead-form">
+        <form id="lead-form" class="form-element" method="POST" autocomplete="off">
+            <h2 class="form-title">Оставьте заявку</h2>
+            <p class="form-message">Наш специалист свяжется с вами в ближайшее время, ответит на ваши вопросы и поможет с&nbsp;размещением</p>
+            <div class="text-fields">
+                <input type="text" name="name" id="name1" placeholder="ФИО">
+                <span id="name1Error" class="form-error"></span><br>
+                <input type="tel" name="phone" id="phone1" class="form-phone" placeholder="Телефон"> 
+                <span id="phone1Error" class="form-error"></span><br>
+                <div class="custom-select">
+                    <select>
+                        <option value="default">Категория</option>
+                        <option value="restaurant">Ресторан или кафе</option>
+                        <option value="bar">Бар</option>
+                        <option value="barber">Барбершоп</option>
+                        <option value="club">Ночной клуб</option>
+                        <option value="hookah">Кальянная</option>
+                        <option value="beauty">Салон красоты</option>
+                        <option value="car">Автосалон</option>
+                        <option value="excursion">Экскурсии</option>
+                    </select>
+                </div>
+                <input type="text" name="company" id="company1" class="company-name" placeholder="Название компании">
+                <span id="company1Error" class="form-error"></span><br>
+                <input name="theme" type="hidden" class="form-theme" value="Заявка на подписку">
+                <div id="error"></div>
+            </div>
+            <input type="submit" id="submit1" name="send-form" value="отправить заявку">
+            <div class="approve">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="checkbox1">
+                    <span class="checkmark"></span>Согласен с положениями <a href="docs/oferta.html" data-fancybox data-type="iframe">оферты</a> и <a href="docs/privacy.html"  data-fancybox data-type="iframe">политикой обработки данных</a>
+                </label>
+            </div>
+        </form>
+    </div>
+
+    <div id="lead-form-manager">
+        <form id="lead-form" class="form-element" method="POST" autocomplete="off">
+            <h2 class="form-title">Оставьте заявку</h2>
+            <p class="form-message">Для связи с менеджером оставьте ваши контактные данные</p>
+            <div class="text-fields">
+                <input type="text" name="name" id="name2" placeholder="Ваше имя">
+                <span id="name2Error" class="form-error"></span><br>
+                <input type="tel" name="phone" id="phone2" class="form-phone" placeholder="Телефон">
+                <span id="name2Error" class="form-error"></span><br>
+                <input name="theme" type="hidden" class="form-theme" value="Персональный менеджер">
+            </div>
+            <input type="submit" id="submit2" name="send-form" value="отправить заявку">
+            <div class="approve">
+            <label class="custom-checkbox">
+                <input type="checkbox" id="checkbox2">
+                <span class="checkmark"></span>Согласен с <a href="docs/privacy.html" data-fancybox data-type="iframe">политикой обработки данных</a>
+            </label>
+        </div>
+        </form>
+    </div>
+
+    <div class="wrapper">
+        <div class="content">
+            <article id="main-block" class="cont">
+                <div class="cent">
+                    <div class="logo-block"><img src="img/apart-sharing-logo.svg" alt="Apart Sharing логотип"></div>
+                    <div class="main-offer">
+                        <div class="main-offer-text">
+                            <h1>Получайте больше новых&nbsp;клиентов</h1>
+                            <p class="title-comment">Разместите информацию о вашем бизнесе в приложении Apart Sharing всего за&nbsp;<span class="line">3&nbsp;990</span> <span class="yell">990&nbsp;руб.&nbsp;в&nbsp;месяц</span>, и наши гости станут вашими клиентами</p>
+                            <div id="lead-block-1" class="cont lead-block">
+                                <div class="btn" data-fancybox="single" data-src="#subsribe">оформить подписку</div>
+                            </div>
+                        </div>
+                        <div class="main-img"><img src="img/main-pic.png" alt="Лучшее рядом Apart Sharing"></div>
+                    </div>
+                </div>
+            </article>
+            <article id="indexes" class="cont">
+                <div class="cent">
+                    <ul>
+                        <li>
+                            <h3>Минимум конкурентов</h3>
+                            <p>Только 5 компаний в каждой нише в вашем городе</p>
+                        </li>
+                        <li>
+                            <h3>Целевые клиенты</h3>
+                            <p>Только живая и платежеспособная аудитория которая ищет ваши услуги</p>
+                        </li>
+                        <li>
+                            <h3>Контроль эффективности</h3>
+                            <p>Применение промо-кода Apart Sharing позволяет отслеживать количество привлеченных клиентов</p>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <article class="cont" id="how-it-works">
+                <div class="cent">
+                    <h1>Как это работает</h1>
+                    <p>Путь нашего гостя к вашему бизнесу</p>
+                    <ul>
+                        <li>
+                            <div class="how-pic"><img src="img/step-1.jpg" alt="Шаг 1. Бронирование квартиры"></div>
+                            <p class="comment">Наши гости платежеспособны. Минимальный чек заселения  3&nbsp;000&nbsp;руб.<br><span>Гость бронирует квартиру и ищет досуг поблизости.</span></p>
+                        </li>
+                        <li>
+                            <div class="how-pic"><img src="img/step-2.jpg" alt="Шаг 2. Выбор категории сервиса поблизости"></div>
+                            <p class="comment">Чтобы облегчить его поиск, мы создали раздел “Лучшее рядом”.<br><span>Гость выбирает категорию услуг и товаров, которые хочет приобрести</span></p>
+                        </li>
+                        <li>
+                            <div class="how-pic"><img src="img/step-3.jpg" alt="Шаг 3. Выбор сервиса, маршрут и трансфер"></div>
+                            <p class="comment">Мы показываем ему компании, удовлетворяющие его запрос.<br><span>Гость может проложить маршрут на карте, а также заказать трансфер до вашего заведения</span></p>
+                        </li>
+                    </ul>
+                    <h3>Чтобы гость с большей вероятностью принял решение, мы стимулируем его скидками до 30%</h3>
+                </div>
+            </article>
+            <article id="audience" class="cont">
+                <div class="cent">
+                    <h1>Аудитория (21+)</h1>
+                    <p>Все пользователи приложения проходят обязательную верификацию, что гарантирует привлечение только платежеспособной аудитории из числа гостей вашего города</p>
+                    <ul class="graphics">
+                        <li id="graphic-count">
+                            <div class="graphic-cap">Пользователи</div>
+                            <div class="graphic">
+                                <img src="img/graphic-1.svg" alt="График Пользователи">
+                            </div>
+                        </li>
+                        <li id="graphic-sex">
+                            <div class="graphic-cap">Пол</div>
+                            <div class="graphic">
+                                <div class="graphic-img"><img src="img/graphic-2.svg" alt="График пол"></div>
+                                <div class="graphic-legend">
+                                    <ul>
+                                        <li>Мужчины</li>
+                                        <li>Женщины</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li id="graphic-age">
+                            <div class="graphic-cap">Возраст</div>
+                            <div class="graphic">
+                                <div class="graphic-img"><img src="img/graphic-3.svg" alt="График возраст"></div>
+                                <div class="graphic-legend">
+                                    <ul>
+                                        <li>21-34</li>
+                                        <li>35-44</li>
+                                        <li>45-59</li>
+                                        <li>60+</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <article id="sources" class="cont">
+                <div class="cent">
+                    <div class="source-block">
+                        <div class="source-cap">
+                            <h1>Источники привлечения клиентов</h1>
+                            <p>Мы постоянно работаем над увеличением численности нашей аудитории: размещаем рекламу на онлайн-площадках, в аэропортах и на билбордах</p>
+                            <div class="source-icons"><img src="img/soc-logo-horis.png" alt="Онлайн-площадки"></div>
+                        </div>
+                        <div id="source-elements"></div>
+                    </div>
+                </div>
+            </article>
+            <article id="niche" class="cont">
+                <div class="cent">
+                    <h1>Ниши</h1>
+                    <p>Для которых эффективно данное продвижение</p>
+                    <ul class="niches-list">
+                        <li class="item1 dark">
+                            <div class="item-cap">Рестораны</div>
+                            <div class="discount">до 10%</div>
+                        </li>
+                        <li class="item2 light">
+                            <div class="item-cap">Бары</div>
+                            <div class="discount">до 10%</div>
+                        </li>
+                        <li class="item3 dark">
+                            <div class="item-cap">Барбершопы</div>
+                            <div class="discount">до 15%</div>
+                        </li>
+                        <li class="item4 dark">
+                            <div class="item-cap">Ночные клубы</div>
+                            <div class="discount">до 5%</div>
+                        </li>
+                        <li class="item5 dark">
+                            <div class="item-cap">Кальянные</div>
+                            <div class="discount">Произвольный текст</div>
+                        </li>
+                        <li class="item6 light">
+                            <div class="item-cap">Салоны красоты</div>
+                            <div class="discount">до 10%</div>
+                        </li>
+                        <li class="item7 light">
+                            <div class="item-cap">Автосалоны</div>
+                            <div class="discount">до 2%</div>
+                        </li>
+                        <li class="item8 light">
+                            <div class="item-cap">Экскурсии</div>
+                            <div class="discount">до 15%</div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <article id="subscribe" class="cont">
+                <div class="cent">
+                    <h2>Оформите подписку прямо сейчас и размещайтесь на&nbsp;специальных условиях всего за <span class="line">3&nbsp;990&nbsp;руб.</span><br><span class="yell">990 руб. в месяц</span></h2>
+                    <div class="btn" data-fancybox="dialog" data-src="#subsribe">оформить подписку</div>
+                </div>
+            </article>
+            <article id="manager" class="cont">
+                <div class="cent">
+                    <h2>Если у вас остались вопросы, задайте их вашему персональному менеджеру:</h2>
+                    <div class="manager-card">
+                        <div class="manager-photo">
+                            <img src="img/manager-photo.jpg" alt="Менеджер Apart Sharing">
+                        </div>
+                        <div class="manager-text">
+                            <div class="manager-name">Ирина С.</div>
+                            <div class="manager-post">Консультант Apart Sharing</div>
+                        </div>
+                        <div>
+                            <div class="btn" data-fancybox="manager" data-src="#lead-form-manager">задать вопрос</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <footer id="footer" class="footer cont">
+            <div class="cent">
+                <p>© ООО «Апарт Шеринг», 2022</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/slick.min.js"></script>
+</body>
+</html>
