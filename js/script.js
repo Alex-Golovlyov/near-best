@@ -130,175 +130,103 @@ $(document).ready(function () {
       return false;
     }
 
+    //custom select
+    // toggle the custom select options when the select header is clicked
+    $(".custom-select .select-header").click(function() {
+      $(this).parent().toggleClass("open");
+    });
+
+    // set the selected option when an option is clicked
+    $(".custom-select .option").click(function() {
+      let value = $(this).data("value");
+      $(this).siblings().removeClass("selected");
+      $(this).addClass("selected");
+      $(this).closest(".custom-select").find(".select-value").text($(this).text());
+      $(this).closest(".custom-select").find("input[type='hidden']").val(value);
+      $(this).closest(".custom-select").removeClass("open");
+    });
+
     // form check
     
-    $('#name1').on('blur', function() {
-      var name1 = $('#name1').val();
-      
-      if (name1.length < 4) {
-        $('#name1Error').text('Введите хотя бы 4 символа');
-        $('#name1').css('border', '2px solid #ff6565');
-      } else {
-        $('#name1Error').text('');
-        $('#name1').css('border', '');
-      }
-    });
-    
-    $('#phone1').on('blur', function() {
-      var phone1 = $('#phone1').val(); 
-      if (phone1.length < 5) {
-        $('#phone1Error').text('Добавьте ваш номер телефона');
-        $('#phone1').css('border', '2px solid #ff6565');
-      } else {
-        $('#phone1Error').text('');
-        $('#phone1').css('border', '');
-      }
-    });  
-    
-    $('#company1').on('blur', function() {
-      var company1 = $('#company1').val();
-      if (company1.length < 4) {
-        $('#company1Error').text('Введите хотя бы 4 символа');
-        $('#company1').css('border', '2px solid #ff6565');
-      } else {
-        $('#company1Error').text('');
-        $('#company1').css('border', '');
-      }
-    });
-    
-    $('#name2').on('blur', function() {
-      var name2 = $('#name2').val();
-      
-      if (name2.length < 4) {
-        $('#name2Error').text('Введите хотя бы 4 символа');
-        $('#name2').css('border', '2px solid #ff6565');
-      } else {
-        $('#name2Error').text('');
-        $('#name2').css('border', '');
-      }
-    });
-    
-    $('#phone2').on('blur', function() {
-      var phone2 = $('#phone2').val(); 
-      if (phone2.length < 4) {
-        $('#phone2Error').text('Добавьте ваш номер телефона');
-        $('#phone2').css('border', '2px solid #ff6565');
-      } else {
-        $('#phone2Error').text('');
-        $('#phone2').css('border', '');
-      }
-    });  
-
-    $('#subscribe').on('submit', function(e) {
-      e.preventDefault();
-      
-      var name1 = $('#name1').val();
-      var phone1 = $('#phone1').val();
-      var company1 = $('#company1').val();
-      
-      if (name1.length < 4 || phone1.length < 5 || company1.length < 4) {
-        alert('Пожалуйста, заполните форму');
+    // define validation function
+    function validateInput(inputElement, errorMessage) {
+      let inputValue = inputElement.val().trim();
+      if (inputValue.length === 0 || inputValue.length < 5) {
+        inputElement.addClass("error");
+        inputElement.next("p").text(errorMessage).show();
         return false;
       } else {
-        submitForm();
+        inputElement.removeClass("error");
+        inputElement.next("p").hide();
+        return true;
+      }
+    }
+
+    // add blur event handler to name field
+    $("#name").blur(function() {
+      validateInput($(this), "Имя не менее 4 символов.");
+    });
+
+    // add blur event handler to phone field
+    $("#phone").blur(function() {
+      validateInput($(this), "Заполните поле телефона.");
+    });
+
+    // add blur event handler to company name field
+    $("#company-name").blur(function() {
+      validateInput($(this), "Название компании хотя бы 4 символа.");
+    });
+
+    // add click event handler to custom select element
+    $(".custom-select .select-selected").click(function() {
+      $(this).toggleClass("select-arrow-active");
+      $(this).next(".select-items").toggleClass("select-hide");
+    });
+
+    // add click event handler to custom select options
+    $(".custom-select .select-items div").click(function() {
+      let value = $(this).attr("data-value");
+      $(this).addClass("selected").siblings().removeClass("selected");
+      $(this).closest(".custom-select").find("#company-category-input").val(value);
+      $(this).closest(".custom-select").find(".select-selected").removeClass("select-arrow-active").text($(this).text());
+      $(this).closest(".select-items").addClass("select-hide");
+      validateInput($("#company-category-input"), "Пожалуйста, выберите категорию.");
+    });
+
+    // add change event handler to company category select
+    $("#company-category").change(function() {
+      let selectValue = $(this).val();
+      if (selectValue === "") {
+        $(this).addClass("error");
+        $(this).next("p").text("Пожалуйста, выберите категорию.").show();
+      } else {
+        $(this).removeClass("error");
+        $(this).next("p").hide();
       }
     });
 
-    $('#lead-form-manager').on('submit', function(e) {
-      e.preventDefault();
-      
-      var name2 = $('#name2').val();
-      var phone2 = $('#phone2').val();
-      
-      if (name2.length < 4 || phone2.length < 5) {
-        alert('Пожалуйста, заполните форму');
-        return false;
+    // add submit event handler to form
+    $("form").submit(function(event) {
+      let isValid = true;
+      isValid = validateInput($("#name"), "Имя не менее 4 символов.") && isValid;
+      isValid = validateInput($("#phone"), "Phone must be at least 5 characters long and not empty.") && isValid;
+      isValid = validateInput($("#company-name"), "Company name must be at least 5 characters long and not empty.") && isValid;
+      let selectValue = $("#company-category-input").val();
+      if (selectValue === "") {
+        $(".custom-select").addClass("error");
+        $(".custom-select").next("p").text("Please select a category.").show();
+        isValid = false;
       } else {
-        submitForm();
+        $(".custom-select").removeClass("error");
+        $(".custom-select").next("p").hide();
+      }
+      if (!isValid) {
+        event.preventDefault();
       }
     });
 
     // custom select
 
-    var x, i, j, l, ll, selElmnt, a, b, c;
-    /* Look for any elements with the class "custom-select": */
-    x = document.getElementsByClassName("custom-select");
-    l = x.length;
-    for (i = 0; i < l; i++) {
-      selElmnt = x[i].getElementsByTagName("select")[0];
-      ll = selElmnt.length;
-      /* For each element, create a new DIV that will act as the selected item: */
-      a = document.createElement("DIV");
-      a.setAttribute("class", "select-selected");
-      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-      x[i].appendChild(a);
-      /* For each element, create a new DIV that will contain the option list: */
-      b = document.createElement("DIV");
-      b.setAttribute("class", "select-items select-hide");
-      for (j = 1; j < ll; j++) {
-        /* For each option in the original select element,
-        create a new DIV that will act as an option item: */
-        c = document.createElement("DIV");
-        c.innerHTML = selElmnt.options[j].innerHTML;
-        c.addEventListener("click", function(e) {
-            /* When an item is clicked, update the original select box,
-            and the selected item: */
-            var y, i, k, s, h, sl, yl;
-            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-            sl = s.length;
-            h = this.parentNode.previousSibling;
-            for (i = 0; i < sl; i++) {
-              if (s.options[i].innerHTML == this.innerHTML) {
-                s.selectedIndex = i;
-                h.innerHTML = this.innerHTML;
-                y = this.parentNode.getElementsByClassName("same-as-selected");
-                yl = y.length;
-                for (k = 0; k < yl; k++) {
-                  y[k].removeAttribute("class");
-                }
-                this.setAttribute("class", "same-as-selected");
-                break;
-              }
-            }
-            h.click();
-        });
-        b.appendChild(c);
-      }
-      x[i].appendChild(b);
-      a.addEventListener("click", function(e) {
-        /* When the select box is clicked, close any other select boxes,
-        and open/close the current select box: */
-        e.stopPropagation();
-        closeAllSelect(this);
-        this.nextSibling.classList.toggle("select-hide");
-        this.classList.toggle("select-arrow-active");
-      });
-    }
-
-    function closeAllSelect(elmnt) {
-      /* A function that will close all select boxes in the document,
-      except the current select box: */
-      var x, y, i, xl, yl, arrNo = [];
-      x = document.getElementsByClassName("select-items");
-      y = document.getElementsByClassName("select-selected");
-      xl = x.length;
-      yl = y.length;
-      for (i = 0; i < yl; i++) {
-        if (elmnt == y[i]) {
-          arrNo.push(i)
-        } else {
-          y[i].classList.remove("select-arrow-active");
-        }
-      }
-      for (i = 0; i < xl; i++) {
-        if (arrNo.indexOf(i)) {
-          x[i].classList.add("select-hide");
-        }
-      }
-    }
-
-    /* If the user clicks anywhere outside the select box,
-    then close all select boxes: */
-    document.addEventListener("click", closeAllSelect);    
+        
 
 });

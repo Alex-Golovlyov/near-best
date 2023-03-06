@@ -1,6 +1,6 @@
 * { box-sizing: border-box !important; margin: 0; padding: 0;  outline: none; }
 html, body { height: 100%; font-family: 'Montserrat'; font-weight: 500; color: #fff; }
-body { background: url(../img/main-back.jpg) top center no-repeat #3620a7; background-size: unset; }
+.main-page { background: url(../img/main-back.jpg) top center no-repeat #3620a7; background-size: unset; }
 a { text-decoration: none; color: #2F80ED; }
 a:hover { color: #64a7ff; }
 a:active, a:hover, a:focus { outline: none; border: none; }
@@ -78,7 +78,8 @@ input[type="submit"] { border: 0; outline: none; display: inline-block; padding:
 	margin: 0; font-size: 1em; }
 input[type="submit"]:disabled { background: #bebebe; cursor: default; box-shadow: 0px 2px 0px #aaa, 0px 9px 16px rgb(46 167 255 / 30%); }
 input[type="submit"]:disabled:hover { background: #bebebe; cursor: default; }
-.form-error { font-size: .7em; margin-bottom: .5em; color: #ff6565; }
+.text-fields p { font-size: .7em; margin-bottom: .5em; color: #ff6565; }
+.text-fields .error { border: 2px solid #ff6565; }
 
 
 /* subscribe */
@@ -111,68 +112,82 @@ input[type="submit"]:hover {
 }
 
 /* custom select */
-
- .custom-select {
-	position: relative;
-	margin: 0 auto;
-	border: 2px solid #e1e1e1;
-	border-radius: 1em;
-	background: transparent;
-	padding: .3em 1em;
-  }
-  
-  .custom-select select {
+/* Hide the original select */
+.custom-select select {
 	display: none;
   }
   
-  .select-selected {
-	border: 2px solid #e1e1e1;
-	background-color: #fff;
+  /* Style the custom select */
+  .custom-select {
+	position: relative;
+	width: 200px;
+	font-size: 14px;
   }
   
-  /* Style the arrow inside the select element: */
-  .select-selected:after {
-	content: "▼";
-	font-size: 1.8em;
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  color: #bebebe;
-  }
-  
-  /* style the items (options), including the selected item: */
-  .select-items div,.select-selected {
-	color: #2b2b2b;
-	font-weight: bold;
-	padding: 8px 16px;
-	border: transparent;
+  .custom-select .select-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	padding: 0 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 	cursor: pointer;
   }
   
-  /* Style items (options): */
-  .select-items {
+  .custom-select .select-value {
+	flex: 1;
+  }
+  
+  .custom-select .select-arrow {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid #333;
+  }
+  
+  .custom-select.open .select-arrow {
+	border-top: none;
+	border-bottom: 5px solid #333;
+  }
+  
+  .custom-select .select-options {
 	position: absolute;
-	background-color: #fff;
 	top: 100%;
 	left: 0;
-	right: 0;
-	z-index: 99;
-	border-radius: 1em;
-	box-shadow: 0 1em 2em rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-height: 200px;
+	overflow-y: auto;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-top: none;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	z-index: 1;
   }
   
-  /* Hide the items when the select box is closed: */
-  .select-hide {
+  .custom-select .option {
+	padding: 10px;
+	cursor: pointer;
+  }
+  
+  .custom-select .option:hover {
+	background-color: #f2f2f2;
+  }
+  
+  .custom-select .option.selected {
+	background-color: #eee;
+  }
+  
+  /* Hide the hidden input */
+  .custom-select input[type="hidden"] {
 	display: none;
   }
-  
-  .select-items div:hover, .same-as-selected {
-	background-color: rgba(0, 0, 0, 0.1);
-  } 
-
-  /* end of custom select */
+/* end of custom select */
 
 
 
@@ -361,47 +376,106 @@ transition: background-color .2s ease-out;}
 #footer img { max-width: 140px; }
 #footer p { color: #8eacff; }
 
+
+/* ======================== */
+/* success & unsuccess page */
+/* ======================== */
+.success-page,
+.unsuccess-page {
+	background: url(../img/payment-back-m1.jpg) top center no-repeat #3620a7; background-size: cover; text-align: center;
+}
+
+.success-page .logo-block,
+.unsuccess-page .logo-block {
+	width: 100%; padding: 2em 0 0; text-align: center;
+}
+.success-page .logo-block img,
+.unsuccess-page .logo-block img {
+	width: 60%; display: inline-block;
+}
+
+.success-page .main-img,
+.unsuccess-page .main-img {
+	margin: 1em auto 0;
+}
+.success-page .main-img img,
+.unsuccess-page .main-img img {
+	width: 100%; margin: 0 auto;
+}
+
+.success-page .main-message,
+.unsuccess-page .main-message {
+	margin-bottom: 2.8em;
+}
+
+.unsuccess-page .main-message-text span {
+	color: #ff8585;
+}
+
+/* manager & messenger block */
+
+#manager h3 {
+	margin: 2em 2em 1.4em; text-align: center;
+}
+.soc-buttons { display: flex; padding: 0 2em; justify-content: space-around; }
+.soc-buttons > a { width: 30%; display: flex; flex-direction: column; align-items: center; }
+.messengers { width: 3em; }
+.soc-buttons img { width: 80%; }
+.soc-buttons p { margin: .6em 0; font-size: .85em; color: #5feaff; }
+
+.soc-buttons { fill:#7fd2ea; }
+.soc-buttons svg { transition: fill .2s ease-out }
+.soc-buttons svg:hover { fill: #d9f7ff; }
+.soc-buttons a:hover, .soc-buttons a:hover p { fill: #d9f7ff; color: #d9f7ff; }
+
+
 /*========================*/
 /* Media queries
 /*========================*/
 
 @media only screen and (min-width: 360px) {
 	#indexes li { padding: 2em; }
+	.success-page, .unsuccess-page { background: url(../img/payment-back-m2.jpg) top center no-repeat #3620a7; background-size: cover; }
 }
 
 @media only screen and (min-width: 412px) {
+	.success-page, .unsuccess-page { background: url(../img/payment-back-m3.jpg) top center no-repeat #3620a7; background-size: cover; }
 	h1 { font-size: 2.2em; }
 	.cent { padding: 0 2em; }
 }
 
-@media only screen and (min-width: 414px) and (min-height: 896px) {
-
-}
-
-@media only screen and (min-width: 480px) {
-
-}
-
-@media only screen and (min-width: 530px) {
-
-}
-@media only screen and (min-width: 540px) and (min-height: 720px) {
-
-}
-
 @media only screen and (min-width: 720px) {
-	body { background: url(../img/main-back-l.jpg) top center no-repeat #3620a7; background-size: 1400px auto; }
+	.main-page { background: url(../img/main-back-l.jpg) top center no-repeat #3620a7; background-size: 1400px auto; }
+	.success-page, .unsuccess-page { background: url(../img/payment-back.jpg) top center no-repeat #3620a7; background-size: 1400px auto; }
 
 	#lead-form-manager .approve { line-height: 2em; }
 
-	h1, #main-block h1 { font-size: 2.2em; }
-	#main-block h1 { margin-top: 2em; }
+	.main-page h1, .main-page #main-block h1 { font-size: 2.2em; }
+	.main-page #main-block h1 { margin-top: 2em; }
 	.logo-block { width: 12em; }
+
+	.success-page .logo-block,
+	.unsuccess-page .logo-block {
+		display: block; margin: 0 auto; width: 12em; padding: 2em 0; text-align: center;
+	}
+	.success-page .logo-block img,
+	.unsuccess-page .logo-block img {
+		width: 100%;
+	}
 	
 	.main-offer { display: flex; }
 	.main-offer > div { width: 50%; }
 	.main-img { margin: 4em 0; text-align: center; }
 	.main-img img { margin-top: -7em; max-height: 30em; }
+
+	.success-page .main-img,
+	.unsuccess-page .main-img {
+		display: block; width: 24em; margin: 0 auto;
+	}
+	.success-page .main-img img,
+	.unsuccess-page .main-img img {
+		width: 100%; margin: 0 auto;
+	}
 
 	.lead-block { text-align: unset; }
 
@@ -452,10 +526,15 @@ transition: background-color .2s ease-out;}
 	#subscribe h2 { max-width: 70%; margin: 1em auto; }
 
 	#manager .cent { padding: 1em 9em; }
-	.manager-card { display: flex; justify-content: space-between; align-items: center; padding: 1em 2em; }
+	.manager-card { width: 55%; display: flex; justify-content: space-around; align-items: center; padding: 1em; margin: 0 auto; }
+	.manager-card > div { margin: 0 .7em; }
 	.manager-photo { margin: 0; max-width: 5em; }
 	.manager-name { text-align: left; }
 	.manager-card .btn, .manager-name { margin: -.4em 0 0; }
+
+	.soc-buttons { justify-content: center; margin: 0 3em; }
+	.manager-text { text-align: left; }
+	.manager-post { font-size: .8em; }
 
 	.lead-form {
 		width: 500px;
@@ -468,14 +547,6 @@ transition: background-color .2s ease-out;}
 		width: 95%;
 	}
 	.custom-select { width: 95%; }
-}
-
-@media only screen and (min-width: 768px) and (min-height: 1024px) {
-
-}
-
-
-@media only screen and (min-width: 768px) {
 }
 
 @media only screen and (min-width: 800px) {
