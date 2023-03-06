@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // checkbox submit
-    $('#submit1, #submit2').prop('disabled', true);
+    $('#submit').prop('disabled', true);
 
     function disableSubmitButton(formID, checkboxID, submitID) {
       $(checkboxID).change(function() {
@@ -13,8 +13,7 @@ $(document).ready(function () {
       });
     }
 
-    disableSubmitButton('#subsribe', '#checkbox1', '#submit1');
-    disableSubmitButton('#lead-form-manager', '#checkbox2', '#submit2');
+    disableSubmitButton('#subsribe', '#checkbox', '#submit');
 
     $(".form-phone").mask("+7 (999) 999-9999");
 
@@ -131,7 +130,6 @@ $(document).ready(function () {
     }
 
     //custom select
-    // toggle the custom select options when the select header is clicked
     $(".custom-select .select-header").click(function() {
       $(this).parent().toggleClass("open");
     });
@@ -141,8 +139,7 @@ $(document).ready(function () {
       let value = $(this).data("value");
       $(this).siblings().removeClass("selected");
       $(this).addClass("selected");
-      $(this).closest(".custom-select").find(".select-value").text($(this).text());
-      $(this).closest(".custom-select").find("input[type='hidden']").val(value);
+      $(this).closest(".custom-select").find("input[type='text']").val(value);
       $(this).closest(".custom-select").removeClass("open");
     });
 
@@ -151,7 +148,7 @@ $(document).ready(function () {
     // define validation function
     function validateInput(inputElement, errorMessage) {
       let inputValue = inputElement.val().trim();
-      if (inputValue.length === 0 || inputValue.length < 5) {
+      if (inputValue.length === 0 || inputValue.length < 4) {
         inputElement.addClass("error");
         inputElement.next("p").text(errorMessage).show();
         return false;
@@ -176,56 +173,31 @@ $(document).ready(function () {
     $("#company-name").blur(function() {
       validateInput($(this), "Название компании хотя бы 4 символа.");
     });
-
-    // add click event handler to custom select element
-    $(".custom-select .select-selected").click(function() {
-      $(this).toggleClass("select-arrow-active");
-      $(this).next(".select-items").toggleClass("select-hide");
+    
+    // add blur event handler to company category
+    $("#category").blur(function() {
+      validateInput($(this), "Выберите категорию.");
     });
 
     // add click event handler to custom select options
-    $(".custom-select .select-items div").click(function() {
+    $(".custom-select .select-options li").click(function() {
       let value = $(this).attr("data-value");
       $(this).addClass("selected").siblings().removeClass("selected");
-      $(this).closest(".custom-select").find("#company-category-input").val(value);
-      $(this).closest(".custom-select").find(".select-selected").removeClass("select-arrow-active").text($(this).text());
-      $(this).closest(".select-items").addClass("select-hide");
-      validateInput($("#company-category-input"), "Пожалуйста, выберите категорию.");
-    });
-
-    // add change event handler to company category select
-    $("#company-category").change(function() {
-      let selectValue = $(this).val();
-      if (selectValue === "") {
-        $(this).addClass("error");
-        $(this).next("p").text("Пожалуйста, выберите категорию.").show();
-      } else {
-        $(this).removeClass("error");
-        $(this).next("p").hide();
-      }
+      $(this).closest(".custom-select").find("#category").val(value);
+      validateInput($("#category"), "Выберите категорию бизнеса.");
     });
 
     // add submit event handler to form
     $("form").submit(function(event) {
       let isValid = true;
       isValid = validateInput($("#name"), "Имя не менее 4 символов.") && isValid;
-      isValid = validateInput($("#phone"), "Phone must be at least 5 characters long and not empty.") && isValid;
-      isValid = validateInput($("#company-name"), "Company name must be at least 5 characters long and not empty.") && isValid;
-      let selectValue = $("#company-category-input").val();
-      if (selectValue === "") {
-        $(".custom-select").addClass("error");
-        $(".custom-select").next("p").text("Please select a category.").show();
-        isValid = false;
-      } else {
-        $(".custom-select").removeClass("error");
-        $(".custom-select").next("p").hide();
-      }
+      isValid = validateInput($("#phone"), "Заполните поле телефона.") && isValid;
+      isValid = validateInput($("#company-name"), "Название компании хотя бы 4 символа.") && isValid;
+      isValid = validateInput($("#category"), "Выберите категорию бизнеса.") && isValid;
       if (!isValid) {
         event.preventDefault();
       }
     });
-
-    // custom select
 
         
 

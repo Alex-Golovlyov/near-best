@@ -24,38 +24,29 @@
                 <p></p>
                 <input type="text" name="company" id="company-name" class="company-name" placeholder="Название компании">
                 <p></p>
-                <!-- <div class="custom-select">
-                    <select id="company-category-input">
-                        <option value="default">Категория</option>
-                        <option value="restaurant">Ресторан или кафе</option>
-                        <option value="bar">Бар</option>
-                        <option value="barber">Барбершоп</option>
-                        <option value="club">Ночной клуб</option>
-                        <option value="hookah">Кальянная</option>
-                        <option value="beauty">Салон красоты</option>
-                        <option value="car">Автосалон</option>
-                        <option value="excursion">Экскурсии</option>
-                    </select>
-                    <p></p>
-                </div> -->
                 <div class="custom-select">
                     <div class="select-header">
-                        <div class="select-value">Select an option</div>
+                        <input type="text" name="category" class="select-value" id="category" placeholder="Категория">
+                        <p></p>
                         <div class="select-arrow"></div>
                     </div>
                     <ul class="select-options">
-                        <li data-value="" class="option">Select an option</li>
-                        <li data-value="option1" class="option">Option 1</li>
-                        <li data-value="option2" class="option">Option 2</li>
-                        <li data-value="option3" class="option">Option 3</li>
+                        <li data-value="" class="option">Категория</li>
+                        <li data-value="Ресторан или кафе" class="option">Ресторан или кафе</li>
+                        <li data-value="Бары" class="option">Бары</li>
+                        <li data-value="Барбершоп" class="option">Барбершоп</li>
+                        <li data-value="Ночной клуб" class="option">Ночной клуб</li>
+                        <li data-value="Кальянная" class="option">Кальянная</li>
+                        <li data-value="Салон красоты" class="option">Салон красоты</li>
+                        <li data-value="Автосалон" class="option">Автосалон</li>
+                        <li data-value="Экскурсии" class="option">Экскурсии</li>
                     </ul>
-                    <input type="hidden" name="select-option" id="select-option">
                 </div>
             </div>
             <input type="submit" id="submit" name="send-form" value="отправить заявку">
             <div class="approve">
                 <label class="custom-checkbox">
-                    <input type="checkbox" id="checkbox1">
+                    <input type="checkbox" id="checkbox">
                     <span class="checkmark"></span>Согласен с положениями <a href="docs/oferta.html" data-fancybox data-type="iframe">оферты</a> и <a href="docs/privacy.html"  data-fancybox data-type="iframe">политикой обработки данных</a>
                 </label>
             </div>

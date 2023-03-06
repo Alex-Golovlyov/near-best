@@ -112,47 +112,48 @@ input[type="submit"]:hover {
 }
 
 /* custom select */
-/* Hide the original select */
-.custom-select select {
+
+.custom-select .select-options {
 	display: none;
-  }
+	width: 100%;
+	background: #fff;
+	box-shadow: 0 1em 2em rgba(0, 0, 0, 0.4);
+	border-radius: 1.5em;
+	z-index: 999;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.custom-select .select-options li {
+	width: 100%;
+	padding: .5em 2em;
+}
   
-  /* Style the custom select */
-  .custom-select {
+/* Style the custom select */
+.custom-select {
 	position: relative;
-	width: 200px;
-	font-size: 14px;
-  }
-  
-  .custom-select .select-header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 40px;
-	padding: 0 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	cursor: pointer;
-  }
-  
-  .custom-select .select-value {
-	flex: 1;
-  }
-  
-  .custom-select .select-arrow {
+	width: 100%;
+}
+.custom-select .select-arrow {
+	position: absolute;
+	top: 1.6em;
+	right: 1em;
 	width: 0;
 	height: 0;
-	border-left: 5px solid transparent;
-	border-right: 5px solid transparent;
-	border-top: 5px solid #333;
-  }
-  
-  .custom-select.open .select-arrow {
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #333;
+}
+.custom-select.open .select-arrow {
 	border-top: none;
-	border-bottom: 5px solid #333;
-  }
+	border-bottom: 8px solid #333;
+}
+.custom-select.open .select-options {
+	display: block;
+	position: absolute;
+}
   
-  .custom-select .select-options {
+.custom-select .select-options {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -163,15 +164,10 @@ input[type="submit"]:hover {
 	padding: 0;
 	list-style: none;
 	background-color: #fff;
-	border: 1px solid #ccc;
-	border-top: none;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	z-index: 1;
-  }
+	border: 0;
+}
   
   .custom-select .option {
-	padding: 10px;
 	cursor: pointer;
   }
   
@@ -182,11 +178,7 @@ input[type="submit"]:hover {
   .custom-select .option.selected {
 	background-color: #eee;
   }
-  
-  /* Hide the hidden input */
-  .custom-select input[type="hidden"] {
-	display: none;
-  }
+
 /* end of custom select */
 
 
@@ -543,10 +535,15 @@ transition: background-color .2s ease-out;}
 
 	input[type="text"],
 	input[type="tel"],
-	input[type="email"] {
+	input[type="email"],
+	.custom-select .select-options {
 		width: 95%;
 	}
-	.custom-select { width: 95%; }
+	/* custom select */
+	.custom-select .select-arrow { right: 1.4em; }
+	.custom-select.open .select-options {
+		left: .7em;
+	}
 }
 
 @media only screen and (min-width: 800px) {
